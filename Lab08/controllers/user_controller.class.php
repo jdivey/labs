@@ -9,7 +9,7 @@
 class UserController
 {
         public function index() {
-
+            return->index=$index
         }
 
         public function register() {
