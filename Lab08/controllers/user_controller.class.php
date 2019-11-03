@@ -13,7 +13,7 @@ class UserController
         }
 
         public function register() {
-
+                return->register=$register
         }
 
         public function login() {
