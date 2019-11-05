@@ -6,7 +6,7 @@
  * Description:
  */
 
-class Register
+class Register extends View
 {
 
 }

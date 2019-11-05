@@ -6,7 +6,6 @@
  * Description:
  */
 
-class Verify
-{
+class Verify extends View {
 
 }

@@ -5,38 +5,97 @@
  * File: user_controller.class.php
  * Description:
  */
-gjwigojewiogjoewigjioewjgiojgio
+
 class UserController
 {
-        public function index() {
-            return->index=$index
-        }
+      private $index, $register, $login, $verify, $logout, $reset, $do_reset, $error;
 
-        public function register() {
-                return->register=$register
-        }
+    /**
+     * UserController constructor.
+     * @param $index
+     * @param $register
+     * @param $login
+     * @param $verify
+     * @param $logout
+     * @param $reset
+     * @param $do_reset
+     * @param $error
+     */
+    public function __construct($index, $register, $login, $verify, $logout, $reset, $do_reset, $error)
+    {
+        $this->index = $index;
+        $this->register = $register;
+        $this->login = $login;
+        $this->verify = $verify;
+        $this->logout = $logout;
+        $this->reset = $reset;
+        $this->do_reset = $do_reset;
+        $this->error = $error;
+    }
 
-        public function login() {
-blaj blajlfjalkfjoajgoirjgioqrj
-        }
+    /**
+     * @return mixed
+     */
+    public function getIndex()
+    {
+        return $this->index;
+    }
 
-        public function verify() {
+    /**
+     * @return mixed
+     */
+    public function getRegister()
+    {
+        return $this->register;
+    }
 
-        }
+    /**
+     * @return mixed
+     */
+    public function getLogin()
+    {
+        return $this->login;
+    }
 
-        public function logout() {
+    /**
+     * @return mixed
+     */
+    public function getVerify()
+    {
+        return $this->verify;
+    }
 
-        }
+    /**
+     * @return mixed
+     */
+    public function getLogout()
+    {
+        return $this->logout;
+    }
 
-        public function reset() {
+    /**
+     * @return mixed
+     */
+    public function getReset()
+    {
+        return $this->reset;
+    }
 
-        }
+    /**
+     * @return mixed
+     */
+    public function getDoReset()
+    {
+        return $this->do_reset;
+    }
 
-        public function do_reset() {
+    /**
+     * @return mixed
+     */
+    public function getError()
+    {
+        return $this->error;
+    }
 
-        }
 
-        public function error() {
-
-        }
-}ltejhjtwrhjprwjptowo
+}
