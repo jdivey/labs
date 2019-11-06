@@ -1,10 +1,10 @@
 <?php
 
 /*
- * Author: your name
- * Date: today's date
+ * Author: Victor Gonzalez
+ * Date: 11/6/2019
  * Name: index.php
- * Description: short description about this file
+ * Description: Homepage, retrieves an action and calls the appropriate method.
  */
 
 //include code in vendor/autoload.php file
