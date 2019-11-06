@@ -1,102 +1,44 @@
 <?php
-/**
- * Author: Jacob Ivey
- * Date: 11/1/2019
- * File: user_controller.class.php
- * Description:
+
+/*
+ * Author: Victor Gonzalez
+ * Date: 11/6/2019
+ * Name: index.php
+ * Description: Homepage, retrieves an action and calls the appropriate method.
  */
-require_once 'vendor/autoload.php';
 
-class UserController
-{
-      private $index, $register, $login, $verify, $logout, $reset, $do_reset, $error;
+//include code in vendor/autoload.php file
+require_once("vendor/autoload.php");
 
-    /**
-     * UserController constructor.
-     * @param $index
-     * @param $register
-     * @param $login
-     * @param $verify
-     * @param $logout
-     * @param $reset
-     * @param $do_reset
-     * @param $error
-     */
-    public function __construct($index, $register, $login, $verify, $logout, $reset, $do_reset, $error)
-    {
-        $this->index = $index;
-        $this->register = $register;
-        $this->login = $login;
-        $this->verify = $verify;
-        $this->logout = $logout;
-        $this->reset = $reset;
-        $this->do_reset = $do_reset;
-        $this->error = $error;
-    }
+//create an object of UserController
+$user_controller = new UserController();
 
-    /**
-     * @return mixed
-     */
-    public function getIndex()
-    {
-        $all = $this->
-    }
+//add your code below this line to complete this file
+$action = "action";
 
-    /**
-     * @return mixed
-     */
-    public function getRegister()
-    {
-        return $this->register;
-    }
+//retrieve value of action from querystring variable
+if (isset($_GET['action']) && !empty($_GET['action'])) {
+    $action = $_GET['action'];
+}
 
-    /**
-     * @return mixed
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
+//invoke appropriate method depending on the action value
+if ($action == "action") {
+    $user_controller->getIndex();
+} elseif ($action == "register") {
+    $user_controller->getRegister();
+} elseif ($action == "login") {
+    $user_controller->getLogin();
+} elseif ($action = "verify") {
+    $user_controller->getVerify();
+} elseif ($action == "logout") {
+    $user_controller->getLogout();
+} elseif ($action == "reset") {
+    $user_controller->getReset();
+} elseif ($action == "do_reset") {
+    $user_controller->getDoReset();
+}elseif ($action == "error") {
+    $user_controller->getError();
 
-    /**
-     * @return mixed
-     */
-    public function getVerify()
-    {
-        return $this->verify;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLogout()
-    {
-        return $this->logout;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getReset()
-    {
-        return $this->reset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDoReset()
-    {
-        return $this->do_reset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getError()
-    {
-        return $this->error;
-    }
-
+} else {
 
 }
