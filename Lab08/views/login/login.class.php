@@ -13,20 +13,28 @@ class Login extends View {
 ?>
     <!-- page specific content starts -->
     <!-- top row for the page header  -->
-    <div class="top-row">Error</div>
+    <doctype html>
+        <html>
+        <head>
+            <title>Login</title>
+            <!-- Link to css page -->
+            <link type="text/css" rel="stylesheet" href="css/style.css"/>
+        </head>
+        <body>
 
-    <!-- middle row -->
-    <div class="middle-row">
-    <h3>We are sorry, but an error has occurred.</h3>
-    <p><?= $message ?></p>
-    </div>
+        <!-- Sign Up Form -->
+        <form action="index.php" method="post">
+            <h2>Login</h2>
+            Username: <input type="text" name="username" required><br>
+            Password: <input type="password" name="password" minlength="5" required><br>
+            <input type="submit" value="login">
+        </form>
 
-    <!-- bottom row for links  -->
-    <div class="bottom-row">
-        <span style="float: left">Already have an account? <a href="index.php?action=login">Login</a></span>
-        <span style="float: right">Don't have an account? <a href="index.php">Register</a></span>
-    </div>
-    <!-- page specific content ends -->
+        <!-- require footer for every page -->
+        </body>
+        </html>
+
+
 
 
     <?php

@@ -8,5 +8,11 @@
 
 class Register extends View
 {
+    private $message;
+
+    public function __construct()
+    {
+    }
+
 
 }

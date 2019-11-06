@@ -21,13 +21,13 @@ class Index extends View
     <body>
 
     <!-- Sign Up Form -->
-    <form class="signupform">
+    <form action="index.php" method="post">
         <h2>Sign Up/ Register</h2>
-        First Name: <input type="text" name="firstname">
-        Last Name: <input type="text" name="lastname"><br>
-        Username: <input type="text" name="username"><br>
-        E-mail: <input type="email" name="email"><br>
-        Password: <input type="text" name="password"><br>
+        First Name: <input type="text" name="firstname" required>
+        Last Name: <input type="text" name="lastname" required><br>
+        Username: <input type="text" name="username" required><br>
+        E-mail: <input type="email" name="email" required><br>
+        Password: <input type="password" name="password" minlength="5" required><br>
         <input type="checkbox" name="" id="newsletter" value="Yes">I agree to terms and conditions<br>
         <input type="submit" value="Sign Up">
     </form>
@@ -37,3 +37,4 @@ class Index extends View
     </html>
     }
 }
+<?php

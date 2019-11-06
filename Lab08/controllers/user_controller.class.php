@@ -5,6 +5,7 @@
  * File: user_controller.class.php
  * Description:
  */
+require_once 'vendor/autoload.php';
 
 class UserController
 {
