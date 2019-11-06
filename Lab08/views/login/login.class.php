@@ -6,10 +6,10 @@
  * Description:
  */
 
-class Login extends View
-{
+class Login extends View {
+
     //call the header method defined in the parent class to add the header
-parent::header();
+    parent::header;
 ?>
     <!-- page specific content starts -->
     <!-- top row for the page header  -->
@@ -31,5 +31,5 @@ parent::header();
 
     <?php
     //call the footer method defined in the parent class to add the footer
-    parent::footer();
+    pa
 }

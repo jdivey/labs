@@ -38,7 +38,7 @@ class UserController
      */
     public function getIndex()
     {
-        return $this->index;
+        $all = $this->
     }
 
     /**

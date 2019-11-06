@@ -23,8 +23,8 @@ class Index extends View
     <!-- Sign Up Form -->
     <form class="signupform">
         <h2>Sign Up/ Register</h2>
-        First Name: <input type="text" name="fname">
-        Last Name: <input type="text" name="lname"><br>
+        First Name: <input type="text" name="firstname">
+        Last Name: <input type="text" name="lastname"><br>
         Username: <input type="text" name="username"><br>
         E-mail: <input type="email" name="email"><br>
         Password: <input type="text" name="password"><br>
