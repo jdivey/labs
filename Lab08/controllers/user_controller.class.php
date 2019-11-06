@@ -1,44 +1,91 @@
 <?php
-
-/*
+/**
  * Author: Victor Gonzalez
  * Date: 11/6/2019
- * Name: index.php
- * Description: Homepage, retrieves an action and calls the appropriate method.
+ * File: user_controller.class.php
+ * Description:
  */
+require_once 'vendor/autoload.php';
 
-//include code in vendor/autoload.php file
-require_once("vendor/autoload.php");
+class UserController
+{
+      private $user_model;
 
-//create an object of UserController
-$user_controller = new UserController();
+    /**
+     * UserController constructor.
+     */
+    public function __construct()
+    {
+        $this->user_model = new UserModel();
+    }
 
-//add your code below this line to complete this file
-$action = "action";
+    /**
+     * @return mixed
+     */
+    public function getIndex()
+    {
+        $view = new Index();
+        return $view->display();
+    }
 
-//retrieve value of action from querystring variable
-if (isset($_GET['action']) && !empty($_GET['action'])) {
-    $action = $_GET['action'];
-}
+    /**
+     * @return mixed
+     */
+    public function getRegister()
+    {
+        $this->user_model->add_user();
+    }
 
-//invoke appropriate method depending on the action value
-if ($action == "action") {
-    $user_controller->getIndex();
-} elseif ($action == "register") {
-    $user_controller->getRegister();
-} elseif ($action == "login") {
-    $user_controller->getLogin();
-} elseif ($action = "verify") {
-    $user_controller->getVerify();
-} elseif ($action == "logout") {
-    $user_controller->getLogout();
-} elseif ($action == "reset") {
-    $user_controller->getReset();
-} elseif ($action == "do_reset") {
-    $user_controller->getDoReset();
-}elseif ($action == "error") {
-    $user_controller->getError();
+    /**
+     * @return mixed
+     */
+    public function getLogin()
+    {
+        $view = new Login();
+        return $view->display();
+    }
 
-} else {
+    /**
+     * @return mixed
+     */
+    public function getVerify()
+    {
+        $this->user_model->verify_user();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLogout()
+    {
+        $this->user_model->logout();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReset()
+    {
+        $view = new Reset();
+        return $view->display();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDoReset()
+    {
+        $this->user_model->reset_password();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getError()
+    {
+        $view = new UserError();
+        return $view->display();
+    }
+
 
 }
