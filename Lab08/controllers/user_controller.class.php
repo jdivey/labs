@@ -67,7 +67,7 @@ class UserController
     public function getReset()
     {
         $view = new Reset();
-        return $view->display();
+         $view->display();
     }
 
     /**
@@ -81,10 +81,10 @@ class UserController
     /**
      * @return mixed
      */
-    public function getError()
+    public function getError($message)
     {
         $view = new UserError();
-        return $view->display();
+        $view->display($message);
     }
 
 

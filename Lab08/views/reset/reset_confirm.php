@@ -5,3 +5,10 @@
  * File: reset_confirm.php
  * Description:
  */
+
+class ResetConfirm {
+
+    public function display() {
+
+    }
+}

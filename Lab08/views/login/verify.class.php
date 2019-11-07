@@ -9,8 +9,8 @@
 class Verify extends View
 {
 
-
-    public function verify()
+    //display function to verify login of user
+    public function display()
     {
         parent::header();
 

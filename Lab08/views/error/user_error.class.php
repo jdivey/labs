@@ -7,10 +7,10 @@
  *				To create the page header and footer, the display method calls the header and footer 
  *				methods defined in the parent class.	
  */
-
+//UserError class
 class UserError extends View {
     public function display($message) {
-        
+
         //call the header method defined in the parent class to add the header
         parent::header();
         ?>

@@ -8,6 +8,7 @@
 
 class Logout extends View
 {
+    //display function for logout class
     public function display() {
 
         //call the header method defined in the parent class to add the header

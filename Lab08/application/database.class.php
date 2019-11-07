@@ -47,7 +47,7 @@ class Database {
         return $this->objDBConnection;
     }
 
-    //returns the name of the table storing books
+    //returns the name of the table storing users
     public function getUserTable() {
         return $this->param['tblUser'];
     }

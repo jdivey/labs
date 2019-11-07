@@ -8,10 +8,9 @@
 
 class Register extends View
 {
-    private $message;
+    public function display(){
 
-    public function __construct()
-    {
+        if ()
     }
 
 
