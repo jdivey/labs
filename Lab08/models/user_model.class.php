@@ -22,52 +22,69 @@ class UserModel
     //add user function to add new users to database
     public function add_user()
     {
+
+        $password = trim(filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING));
+
+        //hash the password
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        //retrieve other user input from the registration form
+        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
+            $firstname = filter_input(INPUT_POST, "lname", FILTER_SANITIZE_STRING);
+                $lastname = filter_input(INPUT_POST, "fname", FILTER_SANITIZE_STRING);
+                    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+
         //SQL select statement
-        $sql = "SELECT * FROM " . $this->db->getUserTable();
+        $sql = "INSERT INTO" . $this->db->getUserTable(). "VALUES(NULL, '$username', '$hashed_password', '$email', '$firstname', '$lastname')";
 
         //execute the query
-        $query = $this->dbconnection->query($sql);
-
-        if ($query && $query->num_rows > 0) {
-            //array to store all users
-            $users = array();
-
-            //loop through all rows
-            while ($query_row = $query->fetch_assoc()) {
-                $users = new Index($query_row["firstname"],
-                    $query_row["lastname"],
-                    $query_row["username"],
-                    $query_row["password"],
-                    $query_row["email"]);
-            }
+        if($this->dbconnection->query($sql) == TRUE ) {
+            return true;
+        }else{
+            return false;
         }
-                //push the user into the array
-                $users[] = $user;
 
 
     }
+
     public function verify_user() {
-        $verifieduser = new Login();
-        $verifieduser->display();
+       $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING));
+           $password = trim(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
+
+           $sql = "SELECT password FROM" . $this->db->getUserTable() . "WHERE username='$username'";
+
+           //execute the query
+           $query = $this->dbconnection->query($sql);
+
+           if ($query = $this->dbconnection->query->num_rows > 0) {
+               $result_row = $query->fetchassoc();
+               $hash = $result_row['password'];
+               if (password_verify($password, $hash)) {
+                   setcookie("user", $username);
+                   return true;
+               }
+           }
+           return false;
     }
 
     public function logout() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-
-//unset all the session variables
-        $_SESSION = array();
-
-//delete the session cookies
-        setcookie(session_name(), "", time()-10);
-
-//destroy the session
-        session_destroy();
-    }
+        setcookie("user", '', -10);
+        return true;
+}
 
     public function reset_password() {
-        $newpass = new Reset();
-        $newpass->display();
+        $username = trim(filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING));
+        $password = trim(filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING));
+
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        $sql = "UPDATE  " . $this->db->getUserTable(). "SET password='$hashed_password' WHERE username='$username'";
+
+        $query = $this->dbconnection->query($sql);
+
+        if (!$query || $this->dbconnection->affected_rows == 0) {
+            return false;
+        }
+        return true;
     }
 }

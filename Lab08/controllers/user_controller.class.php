@@ -9,7 +9,7 @@ require_once 'vendor/autoload.php';
 
 class UserController
 {
-      private $user_model, $index, $register, $login, $verify, $logout, $reset, $error;
+      private $user_model;
 
 
     /**
@@ -18,13 +18,7 @@ class UserController
     public function __construct()
     {
         $this->user_model= new UserModel();
-        $this->index = new Index();
-        $this->register = new Register();
-        $this->login = new Login();
-        $this->verify= new Verify();
-        $this->logout = new Logout();
-        $this->reset = new Reset();
-        $this->error = new Error();
+
     }
 
 
@@ -34,7 +28,7 @@ class UserController
     public function getIndex()
     {
         $view = new Index();
-        return $view->display();
+        $view->display();
     }
 
     /**
@@ -42,23 +36,22 @@ class UserController
      */
     public function getRegister()
     {
-       $result = $this->user_model->add_user();
+        $retult = $this->user_model->add_user();
 
-       if ($result) {
-           $message = "Passed";
-           $this->
-       }else{
-           $this->
-       }
+        $result = new Register();
+        $result->display($retult);
+
+
     }
 
     /**
      * @return mixed
      */
+    //display the login
     public function getLogin()
     {
         $view = new Login();
-        return $view->display();
+        $view->display();
     }
 
     /**
@@ -66,7 +59,9 @@ class UserController
      */
     public function getVerify()
     {
-        $this->user_model->verify_user();
+       $result =  $this->user_model->verify_user();
+        $verify = new Verify();
+        $verify->display($result);
     }
 
     /**
@@ -75,6 +70,9 @@ class UserController
     public function getLogout()
     {
         $this->user_model->logout();
+
+        $logout = new Logout();
+        $logout->display();
     }
 
     /**
@@ -82,6 +80,14 @@ class UserController
      */
     public function getReset()
     {
+        if (!isset($_COOKIE['user'])) {
+            $this->error("To reset password, please login first.");
+        }else{
+            $user = $_COOKIE['user'];
+            $view = new Reset();
+            $view->display($user);
+        }
+        $this->user_model->reset_password();
         $view = new Reset();
          $view->display();
     }
@@ -91,12 +97,17 @@ class UserController
      */
     public function getDoReset()
     {
-        $this->user_model->reset_password();
+        $result = $this->user_model->reset_password();
+
+        $view = new ResetConfirm();
+        $view->display($result);
+
     }
 
     /**
      * @return mixed
      */
+    //display an error message
     public function getError($message)
     {
         $view = new UserError();

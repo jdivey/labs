@@ -6,46 +6,36 @@
  * Description:
  */
 
-class Reset
+class Reset extends View
 {
     //display function to reset user password
-    public function display(){
-
+    public function display($user)
+    {
+        parent::header();
         //if loop to get cookie for user's username
         if (isset($COOKIE)) {
-        ?>
-         <div class="top-row">Password Reset</div>
-
-        <!-- middle row -->
-        <div class="middle-row">
-            <h3>We are sorry, but an error has occurred.</h3>
-            <p><?= $message ?></p>
-</div>
-
-<!-- bottom row for links  -->
-<div class="bottom-row">
-    <span style="float: left">Already have an account? <a href="index.php?action=login">Login</a></span>
-    <span style="float: right">Don't have an account? <a href="index.php">Register</a></span>
-</div>
-<!-- page specific content ends -->
-<?php }else{
             ?>
-       <form method="post" >
-        <div class="top-row">Password Reset</div>
+            <div class="top-row">Password Reset</div>
+            <div class="middle-row">
+            <form method="post" action="index.php?action=do_reset">
+                <div class="top-row">Password Reset</div>
 
-        <!-- middle row -->
-        <div class="middle-row">
-            Username: <input type="text" name="username" required><br>
-            New Password: <input type="password" name="password" minlength="5" required><br>
-        </div>
+                <!-- middle row -->
 
-        <!-- bottom row for links  -->
-        <div class="bottom-row">
-            <span style="float: left">Already have an account? <a href="index.php?action=login">Login</a></span>
-            <span style="float: right">Don't have an account? <a href="index.php">Register</a></span>
-        </div>
-       </form>
-        <!-- page specific content ends -->}
-<?php
-}
+                   <div> Username: <input type="text" name="username" required><br></div>
+                   <div> New Password: <input type="password" name="password" minlength="5" required value="<?= $user ?>" readonly=""><br></div>
+                </div>
+
+                <!-- bottom row for links  -->
+                <div class="bottom-row">
+                    <span style="float: left">Already have an account? <a href="index.php?action=login">Login</a></span>
+                    <span style="float: right">Don't have an account? <a href="index.php">Register</a></span>
+                </div>
+            </form>
+            <!-- page specific content ends -->}
+            <?php
+
+        }
+        parent::footer();
+    }
 }

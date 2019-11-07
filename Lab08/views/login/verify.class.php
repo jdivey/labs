@@ -10,7 +10,7 @@ class Verify extends View
 {
 
     //display function to verify login of user
-    public function display($message)
+    public function display($verify)
     {
         //call the header method defined in the parent class to add the header
         parent::header();
@@ -21,13 +21,27 @@ class Verify extends View
 
         <!-- middle row -->
         <div class="middle-row">
-            <p><?= $message ?></p>
+            <?php
+            if (!$verify) {
+                echo "<p>login attempt fail</p>";
+            }else{
+                echo "<p>You have successfully logged in.</p>";
+            }
+            ?>
         </div>
 
         <!-- bottom row for links  -->
         <div class="bottom-row">
-            <span style="float: left">Already have an account? <a href="index.php?action=login">Login</a></span>
-            <span style="float: right">Don't have an account? <a href="index.php">Register</a></span>
+            <?php
+            if (!$verify) {
+                echo '  <span style="float: left">Already have an account? <a href="index.php?action=login">Login</a></span';
+                echo ' <span style="float: right">Don\'t have an account? <a href="index.php">Register</a></span>';
+            } else {
+                echo '<span style="float: left">Already have an account? <a href="index.php?action=login">Login</a></span>';
+                echo '<span style="float: right">Don\'t have an account? <a href="index.php">Register</a></span>';
+            }
+            ?>
+
         </div>
         <!-- page specific content ends -->
 
