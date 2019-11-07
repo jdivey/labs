@@ -10,35 +10,32 @@ class Verify extends View
 {
 
     //display function to verify login of user
-    public function display()
+    public function display($message)
     {
+        //call the header method defined in the parent class to add the header
         parent::header();
+        ?>
+        <!-- page specific content starts -->
+        <!-- top row for the page header  -->
+        <div class="top-row">Login</div>
 
-        $message = "Please enter your username and password to login.";
-        $login_status = '';
-        if (isset($_SESSION['login_status'])) {
-            $login_status = $_SESSION['login_status'];
-        }
+        <!-- middle row -->
+        <div class="middle-row">
+            <p><?= $message ?></p>
+        </div>
 
-//
-        if ($login_status == 1) {
-            echo "<p>You are logged in as ", $_SESSION['login'], ".</p>";
-            exit;
-        }
+        <!-- bottom row for links  -->
+        <div class="bottom-row">
+            <span style="float: left">Already have an account? <a href="index.php?action=login">Login</a></span>
+            <span style="float: right">Don't have an account? <a href="index.php">Register</a></span>
+        </div>
+        <!-- page specific content ends -->
 
 
-//user has just registered
-        if ($login_status == 3) {
-            echo "<p>Thank you for registering with us.  Your account has been created.</p>";
-            exit;
-        }
-//the users last login attempt
-        if ($login_status == 2) {
-            $message = "Username or password is invalid.  Please try again.";
-        }
-
+        <?php
+        //call the footer method defined in the parent class to add the footer
         parent::footer();
+
+
     }
-
-
 }

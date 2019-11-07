@@ -9,15 +9,24 @@ require_once 'vendor/autoload.php';
 
 class UserController
 {
-      private $user_model;
+      private $user_model, $index, $register, $login, $verify, $logout, $reset, $error;
+
 
     /**
      * UserController constructor.
      */
     public function __construct()
     {
-        $this->user_model = new UserModel();
+        $this->user_model= new UserModel();
+        $this->index = new Index();
+        $this->register = new Register();
+        $this->login = new Login();
+        $this->verify= new Verify();
+        $this->logout = new Logout();
+        $this->reset = new Reset();
+        $this->error = new Error();
     }
+
 
     /**
      * @return mixed
@@ -33,7 +42,14 @@ class UserController
      */
     public function getRegister()
     {
-        $this->user_model->add_user();
+       $result = $this->user_model->add_user();
+
+       if ($result) {
+           $message = "Passed";
+           $this->
+       }else{
+           $this->
+       }
     }
 
     /**
