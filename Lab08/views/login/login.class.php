@@ -1,6 +1,6 @@
 <?php
 /**
- * Author: Jacob Ivey
+ * Author: Ryan Clements
  * Date: 11/1/2019
  * File: login.class.php
  * Description:

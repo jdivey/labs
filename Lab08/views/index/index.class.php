@@ -11,6 +11,7 @@ class Index extends View
     //display function to display table to register new user
     public function display()
     {
+        parent::header();
 
         ?>
         <doctype html>
@@ -38,5 +39,6 @@ class Index extends View
             </html>
 
         <?php
+        parent::footer();
     }
     }

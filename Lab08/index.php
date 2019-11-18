@@ -37,7 +37,7 @@ if ($action == "index") {
 } elseif ($action == "do_reset") {
     $user_controller->getDoReset();
 }elseif ($action == "error") {
-    $user_controller->getError();
+    $user_controller->getError($message);
 
 } else {
     if (isset($_GET['error']) && !empty($_GET['error'])) {
@@ -46,7 +46,7 @@ if ($action == "index") {
 
     $user_controller->getError($message);
 
-}else {
+}else{
     $message = "Invalid action was requested";
     $user_controller->error($message);
 }
