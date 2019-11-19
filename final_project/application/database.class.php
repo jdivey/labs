@@ -15,11 +15,11 @@ class Database
         'password' => 'phpuser',
         'database' => 'automobile_db',
         'tblVehicle' => 'vehicles',
-        'tblBook' => 'books',
-        'tblGame' => 'games',
-        'tblCD' => 'cds',
-        'tblMovieRating' => 'movie_ratings',
-        'tblBookCategory' => 'book_categories'
+       /// 'tblBook' => 'books',
+        ///'tblGame' => 'games',
+        ///'tblCD' => 'cds',
+        ///'tblMovieRating' => 'movie_ratings',
+        ///'tblBookCategory' => 'book_categories'
     );
     //define the database connection object
     private $objDBConnection = NULL;
