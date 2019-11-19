@@ -50,7 +50,7 @@ class Database
     }
 
     //returns the name of the table that stores movies
-    public function getMovieTable() {
+    public function getVehicleTable() {
         return $this->param['tblVehicle'];
     }
 
