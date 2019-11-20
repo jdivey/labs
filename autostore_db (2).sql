@@ -43,11 +43,11 @@ CREATE TABLE `vehicles` (
 --
 
 INSERT INTO `vehicles` (`id`, `model`, `year`, `price`, `stock`, `image`, `description`) VALUES
-(1, 'Toyota', 2006, 11, 4, '', ''),
-(2, 'Ford', 2004, 8, 4, '', ''),
-(3, 'Nissan' 2009, 12, 3, '', ''),
-(4, 'Kia', 2010, 10, 5, '', ''),
-(5, 'Chevrolet', 2009, 8, '', '');
+(1, 'Toyota', 2006, 11, 4, '', '4-door luxury style care.<br> All leather interior, with choice of black or tan.<br> 34mph highway.'),
+(2, 'Ford', 2004, 8, 4, '', '4-door pickup with all wheel drive.<br> 22mpg highway.<br>'),
+(3, 'Nissan' 2009, 12, 3, '', '4-door car includes v6 engine and turbocharge.<br> All brown leather interior.<br> 28mpg highway.'),
+(4, 'Kia', 2014, 10, 5, '', '4-door car with front wheel drive.<br>On screen navigation and bluetooth player. 29mpg highway.'),
+(5, 'Chevrolet', 2009, 8, '', '2-door pickup with coverbed.<br> Rubber coated exterior trim.<br> 23mph highway.');
 
 --
 -- Indexes for dumped tables
