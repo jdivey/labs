@@ -8,7 +8,7 @@
 
 class VehicleDetail extends VehicleIndexView
 {
-    public function display($vehicles, $confirm = "")
+    public function display($vehicle, $confirm = "")
     {
         //display page header
         parent::displayHeader("Vehicle Details");

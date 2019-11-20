@@ -14,11 +14,11 @@ class WelcomeIndex extends IndexView
         ?>
 
         <div id="thumbnails" style="text-align: center; border: none">
-            <p>Click an image below to explore a library. Click the logo in the banner to come back to this page.</p>
+
 
 
             <a href="<?= BASE_URL ?>/vehicle/index">
-                <img src="<?= BASE_URL ?>/www/img/car.jpg" title="Auto Library"/>
+                <h1>Welcome</h1>
             </a>
 
         </div>

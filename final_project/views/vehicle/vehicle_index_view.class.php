@@ -19,12 +19,12 @@ class VehicleIndexView
         <!--create the search bar -->
         <!--
         <div id="searchbar">
-            <form method="get" action="<?= BASE_URL ?>/book/search">
-                <input type="text" name="query-terms" id="searchtextbox" placeholder="Search books by title" autocomplete="off">
+        <form method="get" action="--><!--/book/search">-->
+               <input type="text" name="query-terms" id="searchtextbox" placeholder="Search books by title" autocomplete="off">
                 <input type="submit" value="Go"/>
             </form>
             <div id="suggestionDiv"></div>
-        </div> -->
+        </div>
         <?php
     }
 
