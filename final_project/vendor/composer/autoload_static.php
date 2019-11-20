@@ -20,6 +20,8 @@ class ComposerStaticInitfbb8414576cc568200e30066da1620cc
         'VehicleIndex' => __DIR__ . '/../..' . '/views/vehicle/index/vehicle_index.class.php',
         'VehicleIndexView' => __DIR__ . '/../..' . '/views/vehicle/vehicle_index_view.class.php',
         'VehicleModel' => __DIR__ . '/../..' . '/models/vehicle_model.class.php',
+        'WelcomeController' => __DIR__ . '/../..' . '/controllers/welcome_controller.class.php',
+        'WelcomeIndex' => __DIR__ . '/../..' . '/views/welcome/welcome_index.class.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
