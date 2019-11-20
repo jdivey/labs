@@ -11,6 +11,7 @@ return array(
     'Composer\\Autoload\\ComposerStaticInitfbb8414576cc568200e30066da1620cc' => $vendorDir . '/composer/autoload_static.php',
     'Database' => $baseDir . '/application/database.class.php',
     'Dispatcher' => $baseDir . '/application/dispatcher.class.php',
+    'IndexView' => $baseDir . '/views/index_view.class.php',
     'Vehicle' => $baseDir . '/models/vehicle.class.php',
     'VehicleController' => $baseDir . '/controllers/vehicle_controller.class.php',
     'VehicleDetail' => $baseDir . '/views/vehicle/detail/vehicle_detail.class.php',
