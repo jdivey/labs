@@ -6,7 +6,7 @@
  * Description:
  */
 
-class VehicleIndexView
+class VehicleIndexView extends IndexView
 {
     public static function displayHeader($model)
     {
