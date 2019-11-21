@@ -20,4 +20,4 @@ define("BASE_URL", "http://localhost/labs/final_project");
  ************************************************************************************/
 
 //define default path for media images
-define("MOVIE_IMG", "www/img/vehicles/");
+define("VEHICLE_IMG", "www/img/vehicles/");

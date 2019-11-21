@@ -24,7 +24,7 @@ class VehicleDetail extends VehicleIndexView
 
 
         if (strpos($image, "http://") === false AND strpos($image, "https://") === false) {
-            $image = BASE_URL . '/' . BOOK_IMG . $image;
+            $image = BASE_URL . '/' . VEHICLE_IMG_IMG . $image;
         }
         ?>
 
@@ -44,7 +44,7 @@ class VehicleDetail extends VehicleIndexView
                     <p><strong>Description:</strong></p>
                     <div id="button-group">
                         <input type="button" id="edit-button" value="   Edit   "
-                               onclick="window.location.href = '<?/*= BASE_URL */ ?>/vehicle/edit/<?/*= $id */ ?>'">&nbsp;
+                               onclick="window.location.href = '<?= BASE_URL ?>/vehicle/edit/<?= $id  ?>'">&nbsp;
                     </div>
                 </td>
                 <td>

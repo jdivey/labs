@@ -39,7 +39,7 @@ class VehicleIndex extends VehicleIndexView
                     }
 
                     echo "<div class='col'><p><a href='", BASE_URL, "/vehicle/detail/$id'><img src='" . $image .
-                        "'></a><span>$model<br>Year $year<br>" . $publish_date->format('m-d-Y') . "</span></p></div>";
+                        "'></a><span>$model<br>Year $year<br>". "</span></p></div>";
                     ?>
                     <?php
                     if ($i % 6 == 5 || $i == count($vehicle) - 1) {

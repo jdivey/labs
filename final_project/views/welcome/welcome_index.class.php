@@ -10,7 +10,7 @@ class WelcomeIndex extends IndexView
 {
     public function display() {
         //display page header
-        parent::displayHeader("Kung Fu Panda Media Library Home");
+        parent::displayHeader("E-Auto Store Home");
         ?>
 
         <div id="thumbnails" style="text-align: center; border: none">

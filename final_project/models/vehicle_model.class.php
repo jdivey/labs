@@ -63,8 +63,8 @@ class VehicleModel
          * WHERE ...
          */
 
-        $sql = "SELECT * FROM " . $this->tblVehicle . "," . $this->tblBookCategory .
-            " WHERE " . $this->tblVehicle . ".category=" . $this->tblBookCategory . ".category_id";
+        $sql = "SELECT * FROM " . $this->tblVehicle ;
+
 
         //execute the query
         $query = $this->dbConnection->query($sql);

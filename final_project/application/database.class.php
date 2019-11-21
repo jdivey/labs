@@ -13,13 +13,8 @@ class Database
         'host' => 'localhost',
         'login' => 'phpuser',
         'password' => 'phpuser',
-        'database' => 'automobile_db',
+        'database' => 'autostore_db',
         'tblVehicle' => 'vehicles',
-       /// 'tblBook' => 'books',
-        ///'tblGame' => 'games',
-        ///'tblCD' => 'cds',
-        ///'tblMovieRating' => 'movie_ratings',
-        ///'tblBookCategory' => 'book_categories'
     );
     //define the database connection object
     private $objDBConnection = NULL;
@@ -49,34 +44,9 @@ class Database
         return $this->objDBConnection;
     }
 
-    //returns the name of the table that stores movies
+    //returns the name of the table that stores vehicles
     public function getVehicleTable() {
         return $this->param['tblVehicle'];
-    }
-
-    //returns the name of the table that stores books
-    public function getBookTable() {
-        return $this->param['tblBook'];
-    }
-
-    //returns the name of the table storing games
-    public function getGameTable() {
-        return $this->param['tblGame'];
-    }
-
-    //returns the name of the table storing cds
-    public function getCDTable() {
-        return $this->param['tblCD'];
-    }
-
-    //returns the name of the table storing movie ratings
-    public function getMovieRatingTable() {
-        return $this->param['tblMovieRating'];
-    }
-
-    //return the name of the table that stores book categories
-    public function getBookCategoryTable() {
-        return $this->param['tblBookCategory'];
     }
 
 }
