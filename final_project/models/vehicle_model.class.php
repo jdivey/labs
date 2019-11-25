@@ -102,8 +102,8 @@ class VehicleModel
     public function view_vehicle($id)
     {
         //the select sql statement
-        $sql = "SELECT * FROM " . $this->tblVehicle . "," . $this->tblBookCategory .
-            " WHERE " . $this->tblVehicle . ".category=" . $this->tblBookCategory . ".category_id" .
+        $sql = "SELECT * FROM " . $this->tblVehicle .
+            " WHERE " . $this->tblVehicle .
             " AND " . $this->tblVehicle . ".id='$id'";
 
         //execute the query
@@ -160,8 +160,8 @@ class VehicleModel
     {
         $terms = explode(" ", $terms); //explode multiple terms into an array
         //select statement for AND search
-        $sql = "SELECT * FROM " . $this->tblVehicle . "," . $this->tblBookCategory .
-            " WHERE " . $this->tblVehicle . ".category=" . $this->tblBookCategory . ".category_id AND (1";
+        $sql = "SELECT * FROM " . $this->tblVehicle .
+            " WHERE " . $this->tblVehicle ;
 
         foreach ($terms as $term) {
             $sql .= " AND title LIKE '%" . $term . "%'";
@@ -196,25 +196,5 @@ class VehicleModel
         }
         return $vehicles;
     }
-
-   /* //get all book ratings
-    private function get_book_categories()
-    {
-        $sql = "SELECT * FROM " . $this->tblBookCategory;
-
-        //execute the query
-        $query = $this->dbConnection->query($sql);
-
-        if (!$query) {
-            return false;
-        }
-
-        //loop through all rows
-        $categories = array();
-        while ($obj = $query->fetch_object()) {
-            $categories[$obj->category] = $obj->category_id;
-        }
-        return $categories;
-    }*/
 
 }

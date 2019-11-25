@@ -28,7 +28,7 @@ class VehicleDetail extends VehicleIndexView
         }
         ?>
 
-        <div id="main-header">Vehicle Details</div>
+        <div  id="main-header">Vehicle Details</div>
         <hr>
         <!-- display vehicle details in a table -->
         <table id="detail">

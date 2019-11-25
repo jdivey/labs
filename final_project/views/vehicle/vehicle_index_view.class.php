@@ -17,9 +17,9 @@ class VehicleIndexView extends IndexView
             var media = "vehicle";
         </script>
         <!--create the search bar -->
-        <!--
+
         <div id="searchbar">
-        <form method="get" action="--><!--/book/search">-->
+        <form method="get" action="<?= BASE_URL ?>/vehicle/search">
                <input type="text" name="query-terms" id="searchtextbox" placeholder="Search vehicles by model" autocomplete="off">
                 <input type="submit" value="Go"/>
             </form>

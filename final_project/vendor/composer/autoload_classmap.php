@@ -19,6 +19,7 @@ return array(
     'VehicleIndex' => $baseDir . '/views/vehicle/index/vehicle_index.class.php',
     'VehicleIndexView' => $baseDir . '/views/vehicle/vehicle_index_view.class.php',
     'VehicleModel' => $baseDir . '/models/vehicle_model.class.php',
+    'VehicleSearch' => $baseDir . '/views/vehicle/search/vehicle_search.class.php',
     'WelcomeController' => $baseDir . '/controllers/welcome_controller.class.php',
     'WelcomeIndex' => $baseDir . '/views/welcome/welcome_index.class.php',
 );

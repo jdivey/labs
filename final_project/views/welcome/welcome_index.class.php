@@ -18,7 +18,7 @@ class WelcomeIndex extends IndexView
 
 
             <a href="<?= BASE_URL ?>/vehicle/index">
-                <h1>Welcome</h1>
+                <h1>Welcome!</h1>
             </a>
 
         </div>
