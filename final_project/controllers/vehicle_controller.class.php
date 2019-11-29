@@ -38,7 +38,7 @@ class VehicleController
     //show details of a vehicle
     public function detail($id)
     {
-        //retrieve the specific book
+        //retrieve the specific vehicle
         $vehicle = $this->vehicle_model->view_vehicle($id);
 
         if (!$vehicle) {

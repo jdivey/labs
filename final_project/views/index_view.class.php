@@ -17,7 +17,7 @@ class IndexView
             <title> <?php echo $page_title ?> </title>
             <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
             <link rel='shortcut icon' href='<?/*= BASE_URL */?>/www/img/favicon.ico' type='image/x-icon' />
-            <link type='text/css' rel='stylesheet' href='<?/*= BASE_URL */?>/www/css/app_style.css' />
+            <link type='text/css' rel='stylesheet' href='<?= BASE_URL ?>/www/css/app_style.css' />
             <script>
                 //create the JavaScript variable for the base url
                 var base_url = "<?= BASE_URL ?>";

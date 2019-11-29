@@ -20,7 +20,7 @@ class VehicleIndexView extends IndexView
 
         <div id="searchbar">
         <form method="get" action="<?= BASE_URL ?>/vehicle/search">
-               <input type="text" name="query-terms" id="searchtextbox" placeholder="Search vehicles by model" autocomplete="off">
+               <input type="text" name="query-terms" id="searchtextbox" placeholder="Search vehicles by model" autocomplete="off" onkeyup="handleKeyUp(event)">
                 <input type="submit" value="Go"/>
             </form>
             <div id="suggestionDiv"></div>

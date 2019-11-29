@@ -186,7 +186,7 @@ class VehicleModel
 
         //loop through all rows in the returned recordsets
         while ($obj = $query->fetch_object()) {
-            $vehicle = new Vehicle(stripslashes($obj->model), stripslashes($obj->year), stripslashes($obj->price), stripslashes($obj->stock), stripslashes($obj->image), stripslashes($obj->description));
+            $vehicle = new Vehicle($obj->model, $obj->year, $obj->price, $obj->stock, $obj->image, $obj->description);
 
             //set the id for the vehicle
             $vehicle->setId($obj->id);

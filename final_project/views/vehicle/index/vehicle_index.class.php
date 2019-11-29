@@ -40,7 +40,7 @@ class VehicleIndex extends VehicleIndexView
                     }
 
                     echo "<div class='col'><p><a href='", BASE_URL, "/vehicle/detail/$id'><img src='" . $image .
-                        "'></a><span>$model<br>Price:$price<br>Year: $year<br>Stock:$stock<br>". "</span></p></div>";
+                        "'><br></a><span>$model<br>Price:$price<br>Year: $year<br>Stock:$stock<br>". "</span></p></div>";
                     ?>
                     <?php
                     if ($i % 6 == 5 || $i == count($vehicles) - 1) {
