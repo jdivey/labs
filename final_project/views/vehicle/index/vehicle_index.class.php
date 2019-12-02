@@ -35,7 +35,7 @@ class VehicleIndex extends VehicleIndexView
                     if (strpos($image, "http://") === false AND strpos($image, "https://") === false) {
                         $image = BASE_URL . "/" . VEHICLE_IMG . $image;
                     }
-                    if ($i % 6 == 0) {
+                    if ($i % 3 == 0) {
                         echo "<div class='row'>";
                     }
 
@@ -43,7 +43,7 @@ class VehicleIndex extends VehicleIndexView
                         "'><br></a><span>$model<br>Price:$price<br>Year: $year<br>Stock:$stock<br>". "</span></p></div>";
                     ?>
                     <?php
-                    if ($i % 6 == 5 || $i == count($vehicles) - 1) {
+                    if ($i % 3 == 2 || $i == count($vehicles) - 1) {
                         echo "</div>";
                     }
                 }
