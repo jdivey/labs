@@ -15,6 +15,7 @@ return array(
     'Vehicle' => $baseDir . '/models/vehicle.class.php',
     'VehicleController' => $baseDir . '/controllers/vehicle_controller.class.php',
     'VehicleDetail' => $baseDir . '/views/vehicle/detail/vehicle_detail.class.php',
+    'VehicleEdit' => $baseDir . '/views/vehicle/edit/vehicle_edit.class.php',
     'VehicleError' => $baseDir . '/views/vehicle/error/vehicle_error.class.php',
     'VehicleIndex' => $baseDir . '/views/vehicle/index/vehicle_index.class.php',
     'VehicleIndexView' => $baseDir . '/views/vehicle/vehicle_index_view.class.php',

@@ -16,6 +16,7 @@ class ComposerStaticInitfbb8414576cc568200e30066da1620cc
         'Vehicle' => __DIR__ . '/../..' . '/models/vehicle.class.php',
         'VehicleController' => __DIR__ . '/../..' . '/controllers/vehicle_controller.class.php',
         'VehicleDetail' => __DIR__ . '/../..' . '/views/vehicle/detail/vehicle_detail.class.php',
+        'VehicleEdit' => __DIR__ . '/../..' . '/views/vehicle/edit/vehicle_edit.class.php',
         'VehicleError' => __DIR__ . '/../..' . '/views/vehicle/error/vehicle_error.class.php',
         'VehicleIndex' => __DIR__ . '/../..' . '/views/vehicle/index/vehicle_index.class.php',
         'VehicleIndexView' => __DIR__ . '/../..' . '/views/vehicle/vehicle_index_view.class.php',
