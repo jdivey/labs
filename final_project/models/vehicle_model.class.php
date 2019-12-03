@@ -103,8 +103,7 @@ class VehicleModel
     {
         //the select sql statement
         $sql = "SELECT * FROM " . $this->tblVehicle .
-            " WHERE " . $this->tblVehicle .
-            " AND " . $this->tblVehicle . ".id='$id'";
+            " WHERE " . $this->tblVehicle . ".id='$id'";
 
         //execute the query
         $query = $this->dbConnection->query($sql);
@@ -161,10 +160,10 @@ class VehicleModel
         $terms = explode(" ", $terms); //explode multiple terms into an array
         //select statement for AND search
         $sql = "SELECT * FROM " . $this->tblVehicle .
-            " WHERE " . $this->tblVehicle ;
+            " WHERE " . $this->tblVehicle . ".id=" . $this->tblVehicle . ".id AND (1" ;
 
         foreach ($terms as $term) {
-            $sql .= " AND title LIKE '%" . $term . "%'";
+            $sql .= " AND model LIKE '%" . $term . "%'";
         }
 
         $sql .= ")";

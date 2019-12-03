@@ -106,7 +106,7 @@ class VehicleController
 
         if ($vehicles === false) {
             //handle error
-            $message = "An error has occurred.";
+            $message = "No seaech parameters!.";
             $this->error($message);
             return;
         }

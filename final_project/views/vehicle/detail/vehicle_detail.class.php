@@ -15,7 +15,7 @@ class VehicleDetail extends VehicleIndexView
 
         //retrieve vehicle details by calling get methods
         $id = $vehicle->getId();
-        $model = $vehicle->getVehicle();
+        $model = $vehicle->getModel();
         $year = $vehicle->getYear();
         $price = $vehicle->getPrice();
         $stock = $vehicle->getStock();
