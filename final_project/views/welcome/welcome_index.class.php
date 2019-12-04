@@ -12,13 +12,18 @@ class WelcomeIndex extends IndexView
         //display page header
         parent::displayHeader("E-Auto Store Home");
         ?>
-
-        <div id="thumbnails" style="text-align: center; border: none">
+        <br>
+        <div id="welcomemessage">
+            <p>Welcome to E-Auto Store Online!</p>
+            <p>Make purchasing your next vehicle easier,<br> without the hassle of salesmen and right from your home!</p>
+        </div>
+<br>
+        <div id="thumbnails" style="text-align: center; border: 5px">
 
 
 
             <a href="<?= BASE_URL ?>/vehicle/index">
-                <h1>Welcome!</h1>
+                <h1> Start Here!</h1>
             </a>
 
         </div>
