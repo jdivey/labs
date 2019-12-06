@@ -232,8 +232,6 @@ class VehicleModel
             die();
         }
 
-        //determine the book id
-        // $id = $this->dbConnection->insert_id;
 
         //close the database connection
         $this->dbConnection->close();

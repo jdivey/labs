@@ -161,22 +161,23 @@ class VehicleController
         $view->display($vehicle);
     }
 
-    public function insert() {
+    public function insert()
+    {
         //insert the vehicle
         $insert = $this->vehicle_model->insert_vehicle();
-        if (!$insert) {
+        if ($insert) {
             //handle errors
             $message = "There was a problem inserting the vehicle into the database.";
             $this->error($message);
             return;
         }
 
-        //display the inserted vehicle details
-        $confirm = "The vehicle was successfully inserted.";
-        $vehicle = $this->vehicle_model->view_vehicle();
+        //display the updated vehicle details
+        $confirm = "The vehicle was successfully added.";
 
-        $view = new VehicleDetail();
-        $view->display($vehicle, $confirm);
+        $view = new VehicleAdd();
+        $view->display($vehicle);
+
     }
 
     public function delete($id) {
@@ -194,6 +195,7 @@ class VehicleController
 
         $view = new VehicleIndex();
         $view->display($vehicle);
+        return $confirm;
     }
 
 
