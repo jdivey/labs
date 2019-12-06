@@ -27,7 +27,7 @@ class IndexView
         <div id="top"></div>
         <div id='wrapper'>
         <div id="banner">
-            <a href="<?= BASE_URL ?>/index.php" style="text-decoration: none" title="Online Autostore">
+            <a href="<?= BASE_URL ?>/vehicle/index.php" style="text-decoration: none" title="Online Autostore">
                <div id="left">
                     <span style='color: #000; font-size: 36pt; font-weight: bold; vertical-align: top'>
                                     E-Auto Store

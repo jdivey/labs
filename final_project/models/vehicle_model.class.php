@@ -21,7 +21,7 @@ class VehicleModel
         $this->db = Database::getDatabase();
         $this->dbConnection = $this->db->getConnection();
         $this->tblVehicle = $this->db->getVehicleTable();
-       // $this->tblBookCategory = $this->db->getBookCategoryTable();
+        // $this->tblBookCategory = $this->db->getBookCategoryTable();
 
         //Escapes special characters in a string for use in an SQL statement. This stops SQL inject in POST vars.
         foreach ($_POST as $key => $value) {
@@ -33,11 +33,11 @@ class VehicleModel
             $_GET[$key] = $this->dbConnection->real_escape_string($value);
         }
 
-       /* //initialize book categories
-        if (!isset($_SESSION['book_categories'])) {
-            $categories = $this->get_book_categories();
-            $_SESSION['book_categories'] = $categories;
-        }*/
+        /* //initialize book categories
+         if (!isset($_SESSION['book_categories'])) {
+             $categories = $this->get_book_categories();
+             $_SESSION['book_categories'] = $categories;
+         }*/
     }
 
     //static method to ensure there is just one VehicleModel instance
@@ -63,7 +63,7 @@ class VehicleModel
          * WHERE ...
          */
 
-        $sql = "SELECT * FROM " . $this->tblVehicle ;
+        $sql = "SELECT * FROM " . $this->tblVehicle;
 
 
         //execute the query
@@ -160,7 +160,7 @@ class VehicleModel
         $terms = explode(" ", $terms); //explode multiple terms into an array
         //select statement for AND search
         $sql = "SELECT * FROM " . $this->tblVehicle .
-            " WHERE " . $this->tblVehicle . ".id=" . $this->tblVehicle . ".id AND (1" ;
+            " WHERE " . $this->tblVehicle . ".id=" . $this->tblVehicle . ".id AND (1";
 
         foreach ($terms as $term) {
             $sql .= " AND model LIKE '%" . $term . "%'";
@@ -194,6 +194,68 @@ class VehicleModel
             $vehicles[] = $vehicle;
         }
         return $vehicles;
+    }
+
+    public function insert_vehicle()
+    {
+        //if the script did not received post data, display an error message and then terminate the script immediately
+        if (!filter_has_var(INPUT_POST, 'model') ||
+            !filter_has_var(INPUT_POST, 'year') ||
+            !filter_has_var(INPUT_POST, 'price') ||
+            !filter_has_var(INPUT_POST, 'stock') ||
+            !filter_has_var(INPUT_POST, 'image') ||
+            !filter_has_var(INPUT_POST, 'description')) {
+
+            echo "There was a problem receiving vehicle details. New vehicle cannot be added.";
+        }
+
+        //retrieve data for the new vehicle; data are sanitized and escaped for security.
+        $model = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'model', FILTER_SANITIZE_STRING)));
+        $year = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'year', FILTER_SANITIZE_STRING)));
+        $price = $this->dbConnection->real_escape_string(filter_input(INPUT_POST, 'price', FILTER_DEFAULT));
+        $stock = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'stock', FILTER_SANITIZE_STRING)));
+        $image = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'image', FILTER_SANITIZE_STRING)));
+        $description = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING)));
+
+        //add your code below
+        //define the insert statement
+        //define the insert statement
+        $sql = "INSERT INTO $this->tblVehicle VALUES (NULL, '$model', '$year', '$price', '$stock', '$image', '$description')";
+
+
+        $query = $this->dbConnection->query($sql);
+
+        //handle errors
+
+        if (!$query) {
+            $this->dbConnection->close();
+            die();
+        }
+
+        //determine the book id
+        // $id = $this->dbConnection->insert_id;
+
+        //close the database connection
+        $this->dbConnection->close();
+
+    }
+
+    public function delete_vehicle($id) {
+        //retrieve book id from a query string variable.
+       // $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+
+//add your code here
+        $sql = "DELETE FROM $this->tblVehicle WHERE id=$id";
+
+        $query = $this->dbConnection->query($sql);
+
+        //handle errors
+
+        if(!$query) {
+            $this->dbConnection->close();
+            die();
+        }
     }
 
 }

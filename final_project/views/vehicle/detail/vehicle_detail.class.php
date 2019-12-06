@@ -43,9 +43,10 @@ class VehicleDetail extends VehicleIndexView
                     <p><strong>Stock:</strong></p>
                     <p><strong>Description:</strong></p>
                     <div id="button-group">
-                        <input type="button" id="edit-button" value="   Edit   "
+                        <input type="button" id="edit-button" value="   Edit  "
                                onclick="window.location.href = '<?= BASE_URL ?>/vehicle/edit/<?= $id  ?>'">&nbsp;
                     </div>
+
                 </td>
                 <td>
                     <p><?= $model ?></p>
@@ -56,7 +57,12 @@ class VehicleDetail extends VehicleIndexView
                     <div id="confirm-message"><?= $confirm ?></div>
                 </td>
             </tr>
+
         </table>
+        <div id="button-group">
+            <input type="button" id="delete-button" value="   Delete  "
+                   onclick="window.location.href = '<?= BASE_URL ?>/vehicle/delete/<?= $id  ?>'">&nbsp;
+        </div>
         <a href="<?= BASE_URL ?>/vehicle/index">Go to vehicle list</a>
 
         <?php

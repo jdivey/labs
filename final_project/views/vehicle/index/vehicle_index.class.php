@@ -51,7 +51,14 @@ class VehicleIndex extends VehicleIndexView
             ?>
         </div>
 
+        <div id="button-group">
+            <input type="button" id="edit-button" value="   Add  "
+                   onclick="window.location.href = '<?= BASE_URL ?>/vehicle/add/'">&nbsp;
+        </div>
+
         <?php
+
+
         //display page footer
         parent::displayFooter();
     } //end of display method

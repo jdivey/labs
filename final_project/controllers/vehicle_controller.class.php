@@ -154,4 +154,47 @@ class VehicleController
         return;
     }
 
+    //display a vehicle in a form for adding
+    public function add()
+    {
+        $view = new VehicleAdd();
+        $view->display($vehicle);
+    }
+
+    public function insert() {
+        //insert the vehicle
+        $insert = $this->vehicle_model->insert_vehicle();
+        if (!$insert) {
+            //handle errors
+            $message = "There was a problem inserting the vehicle into the database.";
+            $this->error($message);
+            return;
+        }
+
+        //display the inserted vehicle details
+        $confirm = "The vehicle was successfully inserted.";
+        $vehicle = $this->vehicle_model->view_vehicle();
+
+        $view = new VehicleDetail();
+        $view->display($vehicle, $confirm);
+    }
+
+    public function delete($id) {
+        $delete = $this->vehicle_model->delete_vehicle($id);
+        if ($delete) {
+            //handle errors
+            $message = "There was a problem removing the vehicle from the database.";
+            $this->error($message);
+            return;
+        }
+
+        //display the inserted vehicle details
+        $confirm = "The vehicle was successfully removed.";
+        $vehicle = $this->vehicle_model->list_vehicle();
+
+        $view = new VehicleIndex();
+        $view->display($vehicle);
+    }
+
+
 }
