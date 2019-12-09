@@ -26,6 +26,7 @@ class WelcomeIndex extends IndexView
                 <h1> Start Here!</h1>
             </a>
 
+
         </div>
 
         <?php

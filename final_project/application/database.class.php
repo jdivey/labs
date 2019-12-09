@@ -15,6 +15,7 @@ class Database
         'password' => 'phpuser',
         'database' => 'autostore_db',
         'tblVehicle' => 'vehicles',
+        'tblUser' => 'users'
     );
     //define the database connection object
     private $objDBConnection = NULL;
@@ -47,6 +48,10 @@ class Database
     //returns the name of the table that stores vehicles
     public function getVehicleTable() {
         return $this->param['tblVehicle'];
+    }
+
+    public function getUserTable() {
+        return $this->param['tblUser'];
     }
 
 }

@@ -2,7 +2,7 @@
 /**
  * Author: Jacob Ivey
  * Date: 11/18/2019
- * File: vehicle_index.class.php
+ * File: user_index.class.php
  * Description:
  */
 
@@ -52,7 +52,7 @@ class VehicleIndex extends VehicleIndexView
         </div>
 
         <div id="button-group">
-            <input type="button" id="edit-button" value="   Add  "
+            <input type="button" id="add-button" value="   Add  "
                    onclick="window.location.href = '<?= BASE_URL ?>/vehicle/add/'">&nbsp;
         </div>
 
