@@ -37,8 +37,8 @@ class IndexView
             </a>
         </div>
         <div id="login">
-            <a href="<?= BASE_URL ?>/user/login/">Login</a>
-            <a href="<?= BASE_URL ?>/user/register/">Register</a>
+            <a href="<?= BASE_URL ?>/user/login/">Login | </a>
+            <a href="<?= BASE_URL ?>/user/register/">Register | </a>
             <a href="<?= BASE_URL ?>/user/index/">Users</a>
         </div>
         <?php

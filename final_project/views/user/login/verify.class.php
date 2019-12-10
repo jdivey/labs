@@ -18,13 +18,13 @@ class Verify extends IndexView {
             <span style="float: left">
                 <?php
                 if (strpos($result, "successful") == true) { //if the user has logged in, display the logout button
-                    echo "Want to log out? <a href='index.php?action=logout'>Logout</a>";
+                    echo "Want to log out? <a href='<?BASE_URL?>/user/verify_user/'>Logout</a>";
                 } else { //if the user has not logged in, display the login button
                     echo "Already have an account? <a href='index.php?action=login'>Login</a>";
                 }
                 ?>
             </span>
-            <span style="float: right">Reset password? <a href="../../../index.php">Reset</a></span>
+            <span style="float: right">Reset password? <a href="index.php?action=reset">Reset</a></span>
         </div>
         <?php
     }

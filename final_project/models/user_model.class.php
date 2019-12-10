@@ -7,12 +7,13 @@
  */
 
 
-    /*
-     * Author: Victor Gonzalez
-     * Date: 12/7/2019
-     * Name: user_model.class.php
-     * Description: The UserModel class manages user data in the database.
-     */
+/*
+ * Author: Victor Gonzalez
+ * Date: 12/7/2019
+ * Name: user_model.class.php
+ * Description: The UserModel class manages user data in the database.
+ */
+
 class UserModel
 {
     //private data members
@@ -22,11 +23,22 @@ class UserModel
     private $tblUser;
 
 
-    public function __construct()
+    private function __construct()
     {
         $this->db = Database::getDatabase();
         $this->dbConnection = $this->db->getConnection();
         $this->tblUser = $this->db->getUserTable();
+
+        //Escapes special characters in a string for use in an SQL statement. This stops SQL inject in POST vars.
+        foreach ($_POST as $key => $value) {
+            $_POST[$key] = $this->dbConnection->real_escape_string($value);
+        }
+
+        //Escapes special characters in a string for use in an SQL statement. This stops SQL Injection in GET vars
+        foreach ($_GET as $key => $value) {
+            $_GET[$key] = $this->dbConnection->real_escape_string($value);
+        }
+
     }
 
     //static method to ensure there is just one BookModel instance
@@ -36,6 +48,43 @@ class UserModel
             self::$_instance = new UserModel();
         }
         return self::$_instance;
+    }
+
+    public function list_user()
+    {
+        /* construct the sql SELECT statement in this format
+         * SELECT ...
+         * FROM ...
+         * WHERE ...
+         */
+
+        $sql = "SELECT * FROM " . $this->tblUser;
+
+
+        //execute the query
+        $query = $this->dbConnection->query($sql);
+
+        // if the query failed, return false.
+        if (!$query)
+            return false;
+
+        //if the query succeeded, but no vehicle was found.
+        if ($query->num_rows == 0)
+            return 0;
+
+        //handle the result
+        //create an array to store all returned vehicles
+        $users = array();
+
+        //loop through all rows in the returned recordsets
+        while ($obj = $query->fetch_object()) {
+            $user = new User(stripslashes($obj->username), stripslashes($obj->password), stripslashes($obj->email), stripslashes($obj->firstname), stripslashes($obj->lastname));
+
+
+            //add the vehicle into the array
+            $users[] = $user;
+        }
+        return $users;
     }
 
     //add a user into the "users" table in the database
@@ -63,12 +112,11 @@ class UserModel
             //hash the password
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             //construct an INSERT query
-            $sql = "INSERT INTO " . $this->db->getUserTable() . " VALUES(NULL, '$username', '$hashed_password', '$email', '$firstname', '$lastname')";
+            $sql = "INSERT INTO " . $this->db->getUserTable() . " VALUES('$username', '$password', '$email', '$firstname', '$lastname')";
             //Execute the query. Throw a database exception if the query failed.
             if ($this->dbConnection->query($sql) === FALSE) {
                 throw new DatabaseException("We are sorry, but we cannot create your account at this moment. Please try again later.");
             }
-            return "Your account has been successfully created.";
         } catch (DataMissingException $e) {
             return $e->getMessage();
         } catch (DataLengthException $e) {
@@ -80,6 +128,10 @@ class UserModel
         } catch (Exception $e) {
             return $e->getMessage();
         }
+
+        $message = 'You have successfully registered.';
+        return $message;
+
     }
 
     //verify username and password against a database record
@@ -97,6 +149,7 @@ class UserModel
             $sql = "SELECT password FROM " . $this->db->getUserTable() . " WHERE username='$username'";
             //execute the query
             $query = $this->dbConnection->query($sql);
+
             if (!$query) {
                 throw new DatabaseException("We are sorry, but we cannot create your account at this moment. Please try again later.");
             }
@@ -104,12 +157,17 @@ class UserModel
             if ($query->num_rows > 0) {
                 $result_row = $query->fetch_assoc();
                 $hash = $result_row['password'];
-                if (password_verify($password, $hash)) {
+                if ($password == $hash) {
                     setcookie("user", $username);
                     return "You have successfully logged in.";
+
+                } else {
+                    throw new DatabaseException("Your username and/or password were invalid. Please try again.");
+
                 }
             } else {
-                throw new DatabaseException("Your username and/or password were invalid. Please try again.");
+                throw new DatabaseException(" invalid. Please try again.");
+
             }
         } catch (DataMissingException $e) {
             return $e->getMessage();
@@ -119,6 +177,7 @@ class UserModel
             return $e->getMessage();
         }
     }
+
 
 //logout user: destroy session data
     public function logout()
@@ -153,7 +212,6 @@ class UserModel
             if (!$query || $this->dbConnection->affected_rows == 0) {
                 throw new DatabaseException("We are sorry, but we cannot reset your password at this moment. Please try again later.");
             }
-            return "You have successfully reset your password.";
         } catch (DataMissingException $e) {
             return $e->getMessage();
         } catch (DataLengthException $e) {
@@ -163,43 +221,8 @@ class UserModel
         } catch (Exception $e) {
             return $e->getMessage();
         }
+        return "You have successfully reset your password.";
     }
 
-    public function list_user()
-    {
-        /* construct the sql SELECT statement in this format
-         * SELECT ...
-         * FROM ...
-         * WHERE ...
-         */
 
-        $sql = "SELECT * FROM " . $this->tblUser .
-                 " WHERE " . $this->tblUser;
-
-
-        //execute the query
-        $query = $this->dbConnection->query($sql);
-
-        // if the query failed, return false.
-        if (!$query)
-            return false;
-
-        //if the query succeeded, but no vehicle was found.
-        if ($query->num_rows == 0)
-            return 0;
-
-        //handle the result
-        //create an array to store all returned vehicles
-        $users = array();
-
-        //loop through all rows in the returned recordsets
-        while ($obj = $query->fetch_object()) {
-            $user = new User(stripslashes($obj->username), stripslashes($obj->password), stripslashes($obj->email), stripslashes($obj->firstname), stripslashes($obj->lastname));
-
-
-            //add the vehicle into the array
-            $users[] = $user;
-        }
-        return $users;
-    }
 }

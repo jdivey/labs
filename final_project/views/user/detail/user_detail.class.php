@@ -6,15 +6,14 @@
  * Description:
  */
 
-class VehicleDetail extends VehicleIndexView
+class UserDetail extends VehicleIndexView
 {
     public function display($vehicle, $confirm = "")
     {
         //display page header
-        parent::displayHeader("Vehicle Details");
+        parent::displayHeader("User Details");
 
         //retrieve vehicle details by calling get methods
-        $id = $vehicle->getId();
         $model = $vehicle->getModel();
         $year = $vehicle->getYear();
         $price = $vehicle->getPrice();

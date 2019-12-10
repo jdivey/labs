@@ -32,7 +32,7 @@ class UserIndex extends VehicleIndexView
                     $firstname = $user->getFirstName();
                     $lastname = $user->getLastName();
 
-                    echo "<div class='col'><p><a href='", BASE_URL, "/user/detail/$id'>
+                    echo "<div class='col'><p><a href='", BASE_URL, "/user/detail/'>
                         <br></a><span><br>Username:$username<br>Password:$password<br>Email: $email<br>Firstname:$firstname<br>Lastname:$lastname<br>". "</span></p></div>";
                     ?>
                     <?php

@@ -12,7 +12,7 @@ class UserController {
     private $user_model;  //an object of the UserModel class
     //create an instance of the UserModel class in the default constructor
     public function __construct() {
-        $this->user_model = new UserModel();
+        $this->user_model = UserModel::geUserModel();
     }
 
     //index action that displays all vehicles
@@ -28,7 +28,7 @@ class UserController {
             return;
         }
 
-        // display all vehicles
+        // display all users
         $view = new UserIndex();
         $view->display($users);
     }
