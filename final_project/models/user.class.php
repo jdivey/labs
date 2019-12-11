@@ -9,15 +9,16 @@
 class User
 {
     //private properties of a Vehicle object
-    private $username, $password, $email, $firstname, $lastname;
+    private $username, $password, $email, $firstname, $lastname, $role;
 
     //the constructor that initializes all properties
-    public function __construct($username, $password, $email, $firstname, $lastname) {
+    public function __construct($username, $password, $email, $firstname, $lastname, $role) {
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
+        $this->role = $role;
     }
 
 
@@ -44,6 +45,11 @@ class User
     //get the image file name of a vehicle
     public function getLastName() {
         return $this->lastname;
+    }
+
+    //get the role of the user
+    public function getRole() {
+        return $this->role;
     }
 
 }

@@ -9,6 +9,18 @@
 class Verify extends IndexView {
 
     public function display($result){
+        parent::displayHeader("Successful Login");
+
+
+        $message = "Please enter your username and password to login.";
+        $login_status = '';
+        if (isset($_SESSION['login_status'])) {
+            $login_status = $_SESSION['login_status'];
+        }
+        if ($login_status == 1) {
+            echo "<p>You are logged in as ", $_SESSION['login'], ".</p>";
+            exit;
+        }
         ?>
         <div class="top-row">Login</div>
         <div class="middle-row">
@@ -24,9 +36,10 @@ class Verify extends IndexView {
                 }
                 ?>
             </span>
-            <span style="float: right">Reset password? <a href="index.php?action=reset">Reset</a></span>
+            <span style="float: right">Reset password? <a href="<?BASE_URL?>/user/reset">Reset</a></span>
         </div>
         <?php
+        parent::displayFooter();
     }
 
 }

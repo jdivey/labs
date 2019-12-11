@@ -57,6 +57,7 @@ class UserController {
     }
     //display the login form
     public function login() {
+        $this->user_model->login();
         $view = new Login();
         $view->display();
     }
@@ -94,4 +95,14 @@ class UserController {
         $view->display($result);
     }
 
+    public function delete($username) {
+        $delete = $this->user_model->delete_user($username);
+        if ($delete) {
+            //handle errors
+            $message = "There was a problem removing the user from the database.";
+            $this->error($message);
+            return;
+        }
+
+    }
 }

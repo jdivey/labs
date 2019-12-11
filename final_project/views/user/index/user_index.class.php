@@ -19,7 +19,7 @@ class UserIndex extends VehicleIndexView
         ?>
         <div style="font-size: larger" id="main-header"> Current Users </div>
 
-        <div style="font-size: xx-large" class="grid-container" style="align-content: center">
+        <div style="font-size: 30px" class="grid-container" style="align-content: center">
             <?php
             if ($users === 0) {
                 echo "No user was found.<br><br><br><br><br>";
@@ -31,9 +31,14 @@ class UserIndex extends VehicleIndexView
                     $email = $user->getEmail();
                     $firstname = $user->getFirstName();
                     $lastname = $user->getLastName();
+                    $role = $user->getRole();
 
                     echo "<div class='col'><p><a href='", BASE_URL, "/user/detail/'>
-                        <br></a><span><br>Username:$username<br>Password:$password<br>Email: $email<br>Firstname:$firstname<br>Lastname:$lastname<br>". "</span></p></div>";
+                        <br></a><span><br>Username:$username<br>Password:$password<br>Email: $email<br>Firstname:$firstname<br>Lastname:$lastname<br>Role:$role<br><div id=\"button-group\">
+          
+            <input type=\"button\" id=\"delete-button\" value=\"   Delete  \"
+                   onclick=\"window.location.href = '<?= BASE_URL ?>/user/delete/<?= $username  ?>'\">&nbsp;
+        </div>". "</span></p></div>";
                     ?>
                     <?php
                     if ($i % 3 == 2 || $i == count($users) - 1) {

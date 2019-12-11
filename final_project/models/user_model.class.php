@@ -78,7 +78,7 @@ class UserModel
 
         //loop through all rows in the returned recordsets
         while ($obj = $query->fetch_object()) {
-            $user = new User(stripslashes($obj->username), stripslashes($obj->password), stripslashes($obj->email), stripslashes($obj->firstname), stripslashes($obj->lastname));
+            $user = new User(stripslashes($obj->username), stripslashes($obj->password), stripslashes($obj->email), stripslashes($obj->firstname), stripslashes($obj->lastname), stripslashes($obj->role));
 
 
             //add the vehicle into the array
@@ -96,9 +96,10 @@ class UserModel
         $lastname = filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_STRING);
         $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+       $role = filter_input(INPUT_POST, 'role'. FILTER_SANITIZE_STRING);
         try {
             //Handle data missing exception. All fields are required.
-            if (empty($username) || empty($password) || empty($lastname) || empty($firstname) || empty($email)) {
+            if (empty($username) || empty($password) || empty($lastname) || empty($firstname) || empty($email) || empty($role)) {
                 throw new DataMissingException("Values were missing in one or more fields. All fields must be filled.");
             }
             //Handle data length exception. The min length of a password is 5.
@@ -159,9 +160,13 @@ class UserModel
                 $hash = $result_row['password'];
                 if ($password == $hash) {
                     setcookie("user", $username);
-                    return "You have successfully logged in.";
+                    return "$username have successfully logged in.";
 
-                } else {
+
+
+                }
+
+                else {
                     throw new DatabaseException("Your username and/or password were invalid. Please try again.");
 
                 }
@@ -176,6 +181,7 @@ class UserModel
         } catch (Exception $e) {
             return $e->getMessage();
         }
+
     }
 
 
@@ -224,5 +230,63 @@ class UserModel
         return "You have successfully reset your password.";
     }
 
+    public function delete_user($username) {
+        //retrieve book id from a query string variable.
+        // $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+
+//add your code here
+        $sql = "DELETE FROM $this->tblUser WHERE username=$username";
+
+        $query = $this->dbConnection->query($sql);
+
+        //handle errors
+
+        if(!$query) {
+            $this->dbConnection->close();
+            die();
+        }
+    }
+
+    public function login() {
+        //start session if it has not already started
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+//create variable login status.
+        $_SESSION['login_status'] = 1;
+
+//initialize variables for username and password
+        $username = $passcode = "";
+
+//retrieve user name and password from the form in the registerform.php
+        if (isset($_POST['username']))
+            $username = $this->dbConnection->real_escape_string(trim($_POST['username']));
+
+        if (isset($_POST['password']))
+            $password = $this->tblUser->real_escape_string(trim($_POST['password']));
+
+//validate user name and password against a record in the users table in the database. If they are valid, create session variables.
+        $sql = "SELECT * FROM $this->tblUser WHERE username='$username' AND password='$password'";
+
+
+        $query = $this->dbConnection->query($sql);
+
+        if($query->num_rows) {
+            //it is a valid user. need to store the user in session variables.
+            $row = $query->fetch_assoc();
+            $_SESSION['login'] = $username;
+            $_SESSION['role'] = $row['role'];
+            $_SESSION['name'] = $row['firstname'] . " " . $row['lastname'];
+            $_SESSION['login_status'] = 0;
+        }
+
+
+
+//close the connection
+        $this->dbConnection->close();
+
+    }
 
 }

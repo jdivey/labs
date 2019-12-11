@@ -21,8 +21,9 @@ class Login extends IndexView
                 <div><input type="submit" class="button" value="Login"></div>
             </form>
         </div>
+        <br>
         <div class="bottom-row">
-            <span style="float: left">Don't have an account? <a href="<?BASE_URL?>/user/verify_user/">Register</a></span>
+            <span style="float: left">Don't have an account? <a href="<?BASE_URL?>/user/register/">Register</a></span>
             <span style="float: right"></span>
         </div>
 

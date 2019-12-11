@@ -145,10 +145,25 @@ class VehicleModel
         $image = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'image', FILTER_SANITIZE_STRING)));
         $description = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING)));
 
-        //query string for update
-        $sql = "UPDATE " . $this->tblVehicle .
-            " SET model='$model', year='$year', price='$price', stock='$stock', "
-            . "image='$image', description='$description' WHERE id='$id'";
+        try{
+            if (empty($model) || empty($year) || empty($price) || empty($stock) || empty($image) || empty($description)) {
+                throw new DataMissingException("Please fill out all fields.");
+            }
+            //query string for update
+            $sql = "UPDATE " . $this->tblVehicle .
+                " SET model='$model', year='$year', price='$price', stock='$stock', "
+                . "image='$image', description='$description' WHERE id='$id'";
+
+            if ($this->dbConnection->query($sql) == FALSE ){
+                throw new DatabaseException("There was a problem connecting to the database.");
+            }
+        }catch(DataMissingException $e) {
+            return $e->getMessage();
+        }catch (DatabaseException $e) {
+            return $e->getMessage();
+        }catch (Exception $e) {
+            return $e->getMessage();
+        }
 
         //execute the query
         return $this->dbConnection->query($sql);
@@ -217,6 +232,17 @@ class VehicleModel
         $image = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'image', FILTER_SANITIZE_STRING)));
         $description = $this->dbConnection->real_escape_string(trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING)));
 
+
+        try{
+            if (empty($model) || empty($year) || empty($price) || empty($stock) || empty($image) || empty($description)) {
+                throw new DataMissingException("Please fill out all fields.");
+            }
+
+
+
+        }catch(DataMissingException $e) {
+           return $e->getMessage();
+        }
         //add your code below
         //define the insert statement
         //define the insert statement
